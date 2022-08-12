@@ -20,6 +20,11 @@ defmodule ApiappWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/api", ApiappWeb do
+    pipe_through :api
+    resources "/random", RandomController, only: [:index]
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", ApiappWeb do
   #   pipe_through :api
